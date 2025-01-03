@@ -81,12 +81,12 @@ Se implementa un servicio de autenticación/autorización que restringe el acces
 ## Uso
 
 Para interactuar con la API, puedes usar herramientas como Postman o curl. 
+
 IMPORTANTE: Debes crear un usuario en tu base de datos local, con la clave encriptada en el formato BCrypt, y luego acceder al endpoint '/login' con tu usuario y tu clave. Esto te devolverá un token que deberás enviar en cada petición que realices a la API. El token dura 2 horas.
 Aquí hay algunos ejemplos de uso:
 
 Crear un nuevo tópico:
 
-    ```bash
     POST /topicos
     Content-Type: application/json
     Body:
@@ -98,17 +98,14 @@ Crear un nuevo tópico:
     
 Mostrar todos los tópicos:
 
-    ```bash
     GET /topicos
     
 Mostrar un tópico específico:
 
-     ```bash
     GET /topicos/{id}
 
 Actualizar un tópico:
 
-    ```bash
     PUT /topicos
     Content-Type: application/json
     Body:
@@ -121,5 +118,10 @@ Actualizar un tópico:
     
 Eliminar un tópico:
 
-```bash
-DELETE /topicos/{id}
+    ```bash
+    DELETE /topicos/{id}
+
+## Autor
+Nombre: Paula Singh
+
+Correo Electrónico: paulasofiasingh@gmail.com
