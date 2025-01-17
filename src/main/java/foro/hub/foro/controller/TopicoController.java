@@ -42,7 +42,10 @@ public class TopicoController {
                 topico.getId(),
                 topico.getMensaje(),
                 topico.getNombreCurso(),
-                topico.getTitulo()
+                topico.getTitulo(),
+                topico.getAutor(),
+                topico.getFechaCreacion(),
+                topico.getStatus()
         );
 
         return ResponseEntity.ok(detalleDto);

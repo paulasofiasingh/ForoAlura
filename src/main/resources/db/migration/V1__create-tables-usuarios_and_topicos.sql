@@ -3,6 +3,9 @@ CREATE TABLE IF NOT EXISTS topicos (
     titulo VARCHAR(100) NOT NULL,
     mensaje VARCHAR(100) NOT NULL,
     nombreCurso VARCHAR(100) NOT NULL,
+    autor VARCHAR(100) NOT NULL,
+    fechaCreacion DATETIME NOT NULL,
+    status ENUM('ACTIVO', 'INACTIVO', 'ARCHIVADO') NOT NULL,
     PRIMARY KEY (id)
 );
 

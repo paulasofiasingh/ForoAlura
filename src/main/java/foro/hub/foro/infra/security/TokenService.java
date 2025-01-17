@@ -33,25 +33,27 @@ public class TokenService {
         }
     }
 
-    public String getSubject(String token){
-        if (token == null){
-            throw new RuntimeException();
+    public String getSubject(String token) {
+        if (token == null) {
+            throw new RuntimeException("El token no puede ser null");
         }
-        DecodedJWT verifier = null;
-       try {
+
+        try {
             Algorithm algorithm = Algorithm.HMAC256(apiSecret); // Valido firma
-            verifier = JWT.require(algorithm)
+            DecodedJWT verifier = JWT.require(algorithm)
                     .withIssuer("foro hub")
                     .build()
                     .verify(token);
-            verifier.getSubject();
-        } catch (JWTVerificationException exception){
-           System.out.println(exception.toString());
+
+            String subject = verifier.getSubject();
+            if (subject == null) {
+                throw new RuntimeException("El subject del token es null");
+            }
+            return subject;
+        } catch (JWTVerificationException exception) {
+            System.out.println("Error durante la verificación del token: " + exception.toString());
+            throw new RuntimeException("Token inválido", exception);
         }
-        if (verifier.getSubject() == null){
-            throw new RuntimeException("Verifier inválido");
-        }
-        return verifier.getSubject();
     }
 
     private Instant generarFechaExpiracion(){
